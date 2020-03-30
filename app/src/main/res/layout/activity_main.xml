@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custombutton"
+        android:text="@string/quantity"
+        android:textSize="25sp"
+        android:layout_margin="30sp" />
+
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150sp"
+        android:layout_marginStart="100sp"
+        android:textSize="30sp"
+        android:text="@string/number"/>
+
+    <Button
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30sp"
+        android:layout_marginTop="145sp"
+        android:text="@string/minus"
+        android:textSize="20sp"
+        android:onClick="decrement"/>
+
+    <Button
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="135sp"
+        android:layout_marginTop="145sp"
+        android:text="@string/plus"
+        android:textSize="20sp"
+        android:onClick="increment"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custombutton"
+        android:text="@string/price"
+        android:textSize="25sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="28sp"
+        android:layout_marginTop="250sp"/>
+
+
+    <TextView
+        android:id="@+id/displayPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="380sp"
+        android:layout_marginStart="75sp"
+        android:textSize="30sp"
+        android:text="@string/currentprice"/>
+
+    <Button
+        android:onClick="submitorder"
+        android:layout_width="210sp"
+        android:layout_height="70sp"
+        android:layout_marginStart="50sp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginTop="470sp"
+        android:background="@color/colorAccent"
+        android:text="@string/order"
+        android:textColor="@color/whilte"
+        android:textSize="20sp"
+        android:id="@+id/order"/>
+
+
+
+
+
+</RelativeLayout>
