@@ -17,35 +17,67 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    int quantity = 1;
-    public void increment(View view){
+    int quantity = 0, total = 0;
+
+    public void increment(View view) {
 
         quantity = quantity + 1;
+
         display(quantity);
-        displayPrice(quantity * 10);
+
+        displayPrice(calculatePrice(quantity,10));
+
+
 
     }
 
     public void decrement(View view) {
 
-        if(quantity > 0) {
+        if (quantity > 0) {
 
             quantity = quantity - 1;
         }
+
         display(quantity);
-        displayPrice(quantity * 10);
+
+        displayPrice(calculatePrice(quantity,10));
+
     }
 
-    public void submitorder(View view){
+    public int calculatePrice(int quantity,int cost_per_coffee){
 
-        String priceMessage = "Total :$" + quantity * 10 + "\n" + "Thank You visit Again" ;
+        total = quantity * cost_per_coffee;
+
+        return total;
+
+
+    }
+
+
+    public void ordersummary(int finalprice) {
+
+        String ordername = "SAMRATH PRAKASH";
+
+
+        String priceMessage = "Name : " + ordername + "\n" + "Quantity: " + quantity + "\n" + "Total: "+ finalprice + "\n Thank You visit Again";
 
         displayMessage(priceMessage);
 
     }
 
 
-    private void displayMessage(String message){
+    public void submitorder(View view) {
+
+
+        int totalprice = calculatePrice(quantity,10);
+        displayPrice(totalprice);
+
+        ordersummary(totalprice);
+
+    }
+
+
+    private void displayMessage(String message) {
 
         TextView priceTextView = (TextView) findViewById(R.id.displayPrice);
         priceTextView.setText(message);
