@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void ordersummary(int finalprice) {
 
-        String ordername = "SAMRATH PRAKASH";
+        String ordername = "Samrath Prakash";
 
 
-        String priceMessage = "Name : " + ordername + "\n" + "Quantity: " + quantity + "\n" + "Total: "+ finalprice + "\n Thank You visit Again";
+        String priceMessage = "Name : " + ordername + "\n" + "Quantity : " + quantity + "\n" + "Total : " + finalprice + "\n" + "Thank You visit Again";
 
         displayMessage(priceMessage);
 

@@ -7,4 +7,6 @@
     <string name="price">PRICE</string>
     <string name="currentprice">$0</string>
     <string name="order">ORDER</string>
+    <string name="toppings">TOPPINGS</string>
+    <string name="addCream">Whipped Cream</string>
 </resources>

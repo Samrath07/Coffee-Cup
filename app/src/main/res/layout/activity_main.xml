@@ -1,87 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+
     tools:context=".MainActivity">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20sp"
-        android:textColor="#FFFFFF"
+        android:layout_margin="30sp"
         android:background="@drawable/custombutton"
-        android:text="@string/quantity"
-        android:textSize="16sp"
-        android:layout_margin="30sp" />
+        android:padding="10sp"
+        android:textStyle="bold"
+        android:text="@string/toppings"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 
-    <TextView
-        android:id="@+id/quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="110sp"
-        android:layout_marginStart="100sp"
-        android:textSize="20sp"
-        android:text="@string/number"/>
 
-    <Button
-        android:layout_width="40sp"
-        android:layout_height="40sp"
-        android:layout_marginStart="30sp"
-        android:layout_marginTop="105sp"
-        android:text="@string/minus"
-        android:textSize="15sp"
-        android:onClick="decrement"/>
-
-    <Button
-        android:layout_width="40sp"
-        android:layout_height="40sp"
-        android:layout_marginStart="135sp"
-        android:layout_marginTop="105sp"
-        android:text="@string/plus"
-        android:textSize="15sp"
-        android:onClick="increment"/>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20sp"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/custombutton"
-        android:text="@string/price"
-        android:textSize="15sp"
-        android:layout_marginStart="30sp"
-        android:layout_marginEnd="28sp"
-        android:layout_marginTop="170sp"/>
+        android:orientation="vertical"/>
 
 
-    <TextView
-        android:id="@+id/displayPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250sp"
-        android:layout_marginStart="75sp"
-        android:textSize="25sp"
-        android:text="@string/currentprice"/>
-
-    <Button
-        android:onClick="submitorder"
-        android:layout_width="150sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="50sp"
-        android:layout_marginEnd="10sp"
-        android:layout_marginTop="400sp"
-        android:background="@color/colorAccent"
-        android:text="@string/order"
-        android:textColor="@color/whilte"
-        android:textSize="15sp"
-        android:id="@+id/order"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30sp"
+                android:buttonTint="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:text="@string/addCream"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30sp"
+            android:background="@drawable/custombutton"
+            android:padding="10sp"
+            android:text="@string/quantity"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
 
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-</RelativeLayout>
+
+            <Button
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginStart="30sp"
+                android:onClick="decrement"
+                android:text="@string/minus"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:text="@string/number"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp" />
+
+
+            <Button
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginStart="10sp"
+                android:onClick="increment"
+                android:text="@string/plus"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30sp"
+            android:background="@drawable/custombutton"
+            android:padding="10sp"
+            android:text="@string/price"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/displayPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="75sp"
+            android:text="@string/currentprice"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+
+        <Button
+            android:id="@+id/order"
+            android:layout_width="120sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="125sp"
+            android:layout_marginTop="30sp"
+
+            android:background="@color/colorAccent"
+            android:onClick="submitorder"
+            android:text="@string/order"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
