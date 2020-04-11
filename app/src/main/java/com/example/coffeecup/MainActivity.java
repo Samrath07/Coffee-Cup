@@ -2,6 +2,8 @@ package com.example.coffeecup;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     int quantity = 0, total = 0;
+
+
 
     public void increment(View view) {
 
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     public int calculatePrice(int quantity,int cost_per_coffee){
 
         total = quantity * cost_per_coffee;
@@ -54,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void ordersummary(int finalprice) {
 
-        String ordername = "Samrath Prakash";
+    public void ordersummary(int finalprice,boolean hasWhipCream, boolean addChoco,String name) {
 
 
-        String priceMessage = "Name : " + ordername + "\n" + "Quantity : " + quantity + "\n" + "Total : " + finalprice + "\n" + "Thank You visit Again";
+
+        String priceMessage = "Name : " + name + "\n" + "Whipped Cream Added : " + hasWhipCream + "\n" + "Chocolate Added : " + addChoco + "\n" + "Quantity : " + quantity + "\n" + "Total : " + finalprice + "\n" + "Thank You visit Again";
 
         displayMessage(priceMessage);
 
@@ -68,11 +74,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void submitorder(View view) {
 
+        EditText name = (EditText) findViewById(R.id.editText);
+
+        String value = name.getText().toString();
+
+        CheckBox hasWhippedCream = (CheckBox) findViewById(R.id.checkbox);
+
+        boolean hasWhipCream = hasWhippedCream.isChecked();
+
+        CheckBox hasChocolate = (CheckBox) findViewById(R.id.checkboxOne);
+
+        boolean add_chocolate = hasChocolate.isChecked();
+
 
         int totalprice = calculatePrice(quantity,10);
         displayPrice(totalprice);
 
-        ordersummary(totalprice);
+        ordersummary(totalprice,hasWhipCream,add_chocolate,value);
 
     }
 

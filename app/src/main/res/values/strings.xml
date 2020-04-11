@@ -9,4 +9,6 @@
     <string name="order">ORDER</string>
     <string name="toppings">TOPPINGS</string>
     <string name="addCream">Whipped Cream</string>
+    <string name="addChocolate">Chocolate</string>
+    <string name="Username">Enter your Name</string>
 </resources>
