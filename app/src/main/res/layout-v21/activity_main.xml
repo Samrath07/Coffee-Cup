@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
 
 
@@ -28,7 +29,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:inputType="textCapWords"
-        android:autofillHints="@string/Username" />
+        android:importantForAutofill="no" />
 
 
     <TextView
@@ -138,28 +139,6 @@
             android:textSize="15sp" />
 
     </LinearLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:background="@drawable/custombutton"
-        android:padding="10sp"
-        android:text="@string/price"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/displayPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="75sp"
-        android:text="@string/currentprice"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
 
 
     <Button

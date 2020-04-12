@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CoffeeCup</string>
     <string name="quantity">QUANTITY</string>
-    <string name="number">0</string>
+    <string name="number">1</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="price">PRICE</string>

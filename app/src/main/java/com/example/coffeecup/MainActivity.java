@@ -1,14 +1,15 @@
 package com.example.coffeecup;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.text.NumberFormat;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,40 +20,59 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    int quantity = 0, total = 0;
-
+    int quantity = 1, total = 0;
 
 
     public void increment(View view) {
 
-        quantity = quantity + 1;
+        if (quantity < 100) {
+
+            quantity = quantity + 1;
+
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), "You cannot order more than 100 cup", Toast.LENGTH_SHORT).show();
+        }
+
 
         display(quantity);
-
-        displayPrice(calculatePrice(quantity,10));
-
 
 
     }
 
     public void decrement(View view) {
 
-        if (quantity > 0) {
+        if (quantity > 1) {
 
             quantity = quantity - 1;
+
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), "You cannot order less than 1 cup", Toast.LENGTH_SHORT).show();
         }
 
+
         display(quantity);
-
-        displayPrice(calculatePrice(quantity,10));
-
     }
 
 
+    public int calculatePrice(int quantity, int cost_per_coffee, boolean hasWhipCream, boolean addChocolate) {
 
-    public int calculatePrice(int quantity,int cost_per_coffee){
+        if (hasWhipCream && addChocolate) {
 
-        total = quantity * cost_per_coffee;
+            total = (cost_per_coffee + 20) * quantity;
+        } else if (addChocolate) {
+
+            total = (cost_per_coffee + 15) * quantity;
+        } else if (hasWhipCream) {
+
+            total = (cost_per_coffee + 10) * quantity;
+        } else {
+
+            total = cost_per_coffee * quantity;
+        }
 
         return total;
 
@@ -60,15 +80,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public String ordersummary(int finalprice, boolean hasWhipCream, boolean addChoco, String name) {
 
-    public void ordersummary(int finalprice,boolean hasWhipCream, boolean addChoco,String name) {
+        String priceMessage = " ";
+         priceMessage = "Name : " + name + "\n" + "Whipped Cream Added : "
+                + hasWhipCream + "\n" + "Chocolate Added : "
+                + addChoco + "\n" + "Quantity : " + quantity + "\n" + "Total : "
+                + finalprice + "\n" + "Thank You visit Again";
 
-
-
-        String priceMessage = "Name : " + name + "\n" + "Whipped Cream Added : " + hasWhipCream + "\n" + "Chocolate Added : " + addChoco + "\n" + "Quantity : " + quantity + "\n" + "Total : " + finalprice + "\n" + "Thank You visit Again";
-
-        displayMessage(priceMessage);
-
+        return priceMessage;
     }
 
 
@@ -77,41 +97,38 @@ public class MainActivity extends AppCompatActivity {
         EditText name = (EditText) findViewById(R.id.editText);
 
         String value = name.getText().toString();
-
+        //
         CheckBox hasWhippedCream = (CheckBox) findViewById(R.id.checkbox);
-
+        //
         boolean hasWhipCream = hasWhippedCream.isChecked();
-
+        //
+        //
         CheckBox hasChocolate = (CheckBox) findViewById(R.id.checkboxOne);
-
+        //
         boolean add_chocolate = hasChocolate.isChecked();
+        //
+        //
+        int totalprice = calculatePrice(quantity, 10, hasWhipCream, add_chocolate);
+        //
+        String message = ordersummary(totalprice, hasWhipCream, add_chocolate, value);
 
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee Cup for " + value);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
 
-        int totalprice = calculatePrice(quantity,10);
-        displayPrice(totalprice);
+        if (intent.resolveActivity(getPackageManager()) != null) {
 
-        ordersummary(totalprice,hasWhipCream,add_chocolate,value);
+            startActivity(intent);
+        }
+
 
     }
-
-
-    private void displayMessage(String message) {
-
-        TextView priceTextView = (TextView) findViewById(R.id.displayPrice);
-        priceTextView.setText(message);
-
-
-    }
-
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.displayPrice);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
-
 
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity);
         quantityTextView.setText("" + number);
+
     }
 }
 
